@@ -16,6 +16,6 @@ When validating an implemented task, follow these steps:
    - If it exists, update it with the new validation method and results.
    - Otherwise, create the file using the [VALIDATION.md](../../assets/templates/VALIDATION.md) template.
 6. Execute or guide the user through the validation steps and record the outcome:
-   - If the validation passes, set the status to `PASS` in `validation.md`.
+   - If the validation passes, set the status to `PASS` in `validation.md` and update the `state` file to contain the text `PASS` only.
    - If the validation fails, set the status to `FAIL` in `validation.md` and proceed with the [DOCUMENT-ISSUES.md](./DOCUMENT-ISSUES.md) action to record what went wrong.
 7. Summarize the validation result and provide next steps if applicable.

@@ -18,7 +18,7 @@ Tequila is an agent skill (not a traditional application) that manages tasks in 
 - **Tasks** are the primary unit of work, each mapping to a Git PR
 - **Subtasks** are individual steps within a task, each mapping to a Git commit. Changes are not committed during implementation — after archiving, the user is asked whether to commit, and the diff is split into subtask-aligned commits
 - **Jira tickets** are optional metadata — multiple tasks can share the same ticket
-- Tasks go through a lifecycle: `PROPOSED → PLANNED → IMPLEMENTED → VALIDATING → ARCHIVED` (with `FAILED` as a side state from any active state; once resolved, a failed task can fall back to any previous active state)
+- Tasks go through a lifecycle: `PROPOSED → PLANNED → IMPLEMENTED → VALIDATING → PASS → ARCHIVED` (with `FAILED` as a side state from any active state; once resolved, a failed task can fall back to any previous active state)
 - Validation is required before archiving
 
 ## Conventions
