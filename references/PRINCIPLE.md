@@ -51,6 +51,10 @@ The corresponding task names are of the same wording (without the index prefix) 
 - `.tequila/tasks/{task-id}/pr.md`: (optional, follows [CREATE-PR.md](../assets/templates/CREATE-PR.md))
   The pull request document for the task `{task-id}`.
   This document summarizes the changes for the Git PR, generated from the proposal, subtasks, design, and commit history.
+- `.tequila/tasks/{task-id}/patches/`: (optional, populated during implementation)
+  Contains Git patch files for each subtask, one patch per subtask.
+  Patch files are named `{subtask_id}-{subtask_name}.patch`, where `{subtask_id}` is the 1-based index of the subtask zero-padded to 3 digits and `{subtask_name}` follows the same kebab-case, verb-led convention as task ids (e.g., `001-add-patches-folder-to-principle.patch`).
+  Each patch captures the diff produced by its corresponding subtask, enabling reviewability, reproducibility (`git apply`), and natural commit mapping at archive time.
 - `.tequila/tasks/{task-id}/*`: (optional)
   Any additional files related to the task `{task-id}`, such as diagrams or supporting documents.
 
