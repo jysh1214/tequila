@@ -11,6 +11,7 @@ When implementing a planned task, follow these steps:
    - Do the subtask as per the user's instructions.
    - If more information or clarification is needed, ask the user, and then amend relevant files if necessary.
    - Mark the subtask as completed in `subtasks.md` using task list grammar (e.g., `- [x]` for completed subtasks).
+   - Save a Git patch file for the subtask under `.tequila/tasks/{task-id}/patches/`. Create the `patches/` directory if it does not exist. Name the file `{subtask_id}-{subtask_name}.patch`, where `{subtask_id}` is the 1-based index of the subtask zero-padded to 3 digits and `{subtask_name}` is kebab-case, verb-led (same convention as task ids). Generate the patch by diffing the working tree changes introduced by this subtask (e.g., `git diff` for the relevant files).
    - Keep the workspace consistent after each subtask (avoid leaving it half-broken unless the user explicitly accepts that).
    - Repeat this step until all subtasks are completed.
 4. Update the `state` file to contain the text `IMPLEMENTED` only.
