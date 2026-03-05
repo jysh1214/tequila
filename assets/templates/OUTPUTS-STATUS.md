@@ -3,7 +3,6 @@
 ## Summary
 
 - Date: [YYYY-MM-DD]
-- Enabled: [YES if `.tequila/` folder exists; NO otherwise]
 
 ## Tasks
 
