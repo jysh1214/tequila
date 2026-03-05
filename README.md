@@ -91,7 +91,11 @@ Follow tequila skill, amend the task {task-id}: {description of the amendment}
 ```txt
 Follow tequila skill, show the current status of tasks
 ```
-8. Document issues in a task:
+8. Show subtasks of a task:
+```txt
+Follow tequila skill, show the subtasks of {task-id}
+```
+9. Document issues in a task:
 ```txt
 Follow tequila skill, document issues found in {task-id}
 ```
