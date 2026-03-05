@@ -37,7 +37,7 @@ The corresponding task names are of the same wording (without the index prefix) 
 - `.tequila/tasks/{task-id}/subtasks/`: (required after `PLANNED`)
   Contains one subdirectory per subtask. Each subdirectory is named `{index}-{subtask-name}`, where `{index}` is the 1-based index of the subtask zero-padded to 3 digits and `{subtask-name}` follows the same kebab-case, verb-led convention as task ids (e.g., `001-add-login-endpoint`).
   Each subtask directory contains:
-  - `commit_message`: The commit message for this subtask. Created during planning as a draft based on the planned intent; updated during implementation to describe the actual change. Used directly as the Git commit message when archiving. Format: a short summary line (under 72 characters), followed by a blank line, then optional body text with context, rationale, or details.
+  - `commit_message`: The commit message for this subtask. Created during planning as a draft based on the planned intent; updated during implementation to describe the actual change. Used directly as the Git commit message when committing. Format: a short summary line (under 72 characters), followed by a blank line, then optional body text with context, rationale, or details.
   - `patch`: The Git patch file capturing the diff produced by this subtask, enabling reviewability, reproducibility (`git apply`), and natural commit mapping at archive time.
   - `state`: The post-implementation review state, containing either `APPROVED` or `REJECTED` only.
 - `.tequila/tasks/{task-id}/validation.md`: (required after `IMPLEMENTED`, follows [VALIDATION.md](../assets/templates/VALIDATION.md))
