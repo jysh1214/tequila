@@ -16,6 +16,6 @@ When validating an implemented task, follow these steps:
    - If it exists, update it with the new validation method and results.
    - Otherwise, create the file using the [VALIDATION.md](../../assets/templates/VALIDATION.md) template.
 6. Execute or guide the user through the validation steps and record the outcome:
-   - If the validation passes, set the `state` file in every subtask directory under `subtasks/` to `APPROVED`. Then set the status to `PASS` in `validation.md` and update the task `state` file to contain the text `PASS` only.
-   - If the validation fails, set the `state` file in every subtask directory under `subtasks/` to `REJECTED`. Then set the status to `FAIL` in `validation.md` and proceed with the [DOCUMENT-ISSUES.md](./DOCUMENT-ISSUES.md) action to record what went wrong.
+   - If the validation passes, set the `state` file in every subtask directory under `subtasks/` to `APPROVED`. Then set the status to `PASS` in `validation.md` and update the task `state` file to contain the text `ARCHIVED` only.
+   - If the validation fails, set the `state` file in every subtask directory under `subtasks/` to `REJECTED`. Then set the status to `FAIL` in `validation.md` and automatically trigger the [DOCUMENT-ISSUES.md](./DOCUMENT-ISSUES.md) action to record what went wrong (this will set the task state to `FAILED`).
 7. Summarize the validation result and provide next steps if applicable.

@@ -39,7 +39,7 @@ mkdir -p .augment/skills && git clone https://github.com/jysh1214/tequila.git .a
           │  │          │                             │
           │  │     ┌────┴────┐                        │
           │  │     │         │                        │
-          │  │   PASS      FAIL                       │
+          │  │   pass      fail                       │
           │  │     │         │                        │
           │  │     ▼         ▼                        │
           │  │ ┌───────┐ ┌─────────────────┐          │
@@ -79,9 +79,9 @@ Follow tequila skill, implement the planned {task-id}
 ```txt
 Follow tequila skill, validate the implemented {task-id}: {description of validation}
 ```
-5. Archive a pass task
+5. Archive a validated task (commit changes):
 ```txt
-Follow tequila skill, archive the pass {task-id}
+Follow tequila skill, archive the validated {task-id}
 ```
 6. Amend an existing task:
 ```txt

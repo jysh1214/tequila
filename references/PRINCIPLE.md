@@ -24,7 +24,7 @@ The corresponding task names are of the same wording (without the index prefix) 
 
 - `.tequila/tasks/{task-id}/state`: (required)
   The state document for the task `{task-id}`, containing its current state only.
-  Possible states are literally `PROPOSED`, `PLANNED`, `IMPLEMENTED`, `VALIDATING`, `PASS`, `FAILED`, and `ARCHIVED`.
+  Possible states are literally `PROPOSED`, `PLANNED`, `IMPLEMENTED`, `VALIDATING`, `FAILED`, and `ARCHIVED`.
   See policies in the **Task Lifecycle** section of this document.
 - `.tequila/tasks/{task-id}/ticket`: (optional)
   The ticket file for the task `{task-id}`, containing the Jira ticket index only (e.g., `PROJ-123`).
@@ -61,7 +61,7 @@ The corresponding task names are of the same wording (without the index prefix) 
 
 ## Task Lifecycle
 
-Each task goes through a defined lifecycle with specific states. The state must be included in the `state` file within each task folder. The possible states are: `PROPOSED`, `PLANNED`, `IMPLEMENTED`, `VALIDATING`, `PASS`, `FAILED`, and `ARCHIVED`. The normal progression is `PROPOSED → PLANNED → IMPLEMENTED → VALIDATING → PASS → ARCHIVED`, and a task cannot skip any state in the forward direction. A task can enter the `FAILED` state from any active state (`PROPOSED`, `PLANNED`, `IMPLEMENTED`, `VALIDATING`, or `PASS`) when issues are found. Once resolved, a `FAILED` task can be moved back to any previous active state depending on the nature of the failure.
+Each task goes through a defined lifecycle with specific states. The state must be included in the `state` file within each task folder. The possible states are: `PROPOSED`, `PLANNED`, `IMPLEMENTED`, `VALIDATING`, `FAILED`, and `ARCHIVED`. The normal progression is `PROPOSED → PLANNED → IMPLEMENTED → VALIDATING → ARCHIVED`, and a task cannot skip any state in the forward direction. If validation fails, the task enters `FAILED` and issues are documented; once resolved, the task can be moved back to a prior active state for retry.
 
 ### Proposed
 
@@ -97,25 +97,16 @@ In this state, the state file contains the text `VALIDATING` only.
 The state indicates that the task is undergoing validation.
 The task folder must contain the `validation.md` file documenting the validation method, steps, expected outcome, and result.
 
-If validation passes, the task moves to `PASS`. If validation fails, the task moves to `FAILED`.
-
-### Pass
-
-In this state, the state file contains the text `PASS` only.
-
-The state indicates that the task has passed validation and is ready for archiving.
-The task folder must contain the `validation.md` file with a `PASS` result.
-
-By confirming the validation result, designated engineers can proceed with archiving to move the task to the final state of `ARCHIVED`.
+If validation passes, the task moves directly to `ARCHIVED`. If validation fails, the DOCUMENT-ISSUES action is triggered automatically, which moves the task to `FAILED`.
 
 ### Failed
 
 In this state, the state file contains the text `FAILED` only.
 
-The state indicates that issues have been found in the task that need to be addressed before proceeding.
+The state indicates that validation has failed and issues have been documented.
 The task folder must contain the `issues.md` file documenting the issues, their root causes, and suggested fixes.
 
-A `FAILED` task can be moved back to its previous state (e.g., `PROPOSED`, `PLANNED`, `IMPLEMENTED`, `VALIDATING`, or `PASS`) once the issues have been resolved and the `issues.md` file has been updated accordingly.
+A `FAILED` task can be moved back to a prior active state (e.g., `PLANNED` or `IMPLEMENTED`) once the issues have been resolved and the task has been amended accordingly.
 
 ### Archived
 
