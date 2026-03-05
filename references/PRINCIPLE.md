@@ -40,9 +40,6 @@ The corresponding task names are of the same wording (without the index prefix) 
   - `description`: (required) AI-written explanation of the subtask — its purpose and its role in the overall task. Created during planning with the planned intent; updated during implementation with a description of the actual patch.
   - `patch`: (required after implementation) The Git patch file capturing the diff produced by this subtask, enabling reviewability, reproducibility (`git apply`), and natural commit mapping at archive time.
   - `state`: (required after validation) The post-implementation review state, containing either `APPROVED` or `REJECTED` only.
-- `.tequila/tasks/{task-id}/design.md`: (optional, follows [TASKS-DESIGN.md](../assets/templates/TASKS-DESIGN.md))
-  The design document for the task `{task-id}`.
-  This document provides a detailed design and rationale for the task.
 - `.tequila/tasks/{task-id}/validation.md`: (required after `IMPLEMENTED`, follows [VALIDATION.md](../assets/templates/VALIDATION.md))
   The validation document for the task `{task-id}`.
   This document describes how to validate the task, the expected outcome, and the result (PASS or FAIL).
@@ -70,14 +67,14 @@ In this state, the state file contains the text `PROPOSED` only.
 The state indicates that the task has been proposed and is ready for planning.
 The task folder must contain at least the `state` and `proposal.md` files in this state.
 
-By reading the `proposal.md` file, stakeholders can understand the motivation and goals. Then, designated engineers can plan the implementation and create `subtasks.md`, the `subtasks/` directory, and optionally the `design.md` file accordingly to move the task to the next state of `PLANNED`.
+By reading the `proposal.md` file, stakeholders can understand the motivation and goals. Then, designated engineers can plan the implementation and create `subtasks.md` and the `subtasks/` directory accordingly to move the task to the next state of `PLANNED`.
 
 ### Planned
 
 In this state, the state file contains the text `PLANNED` only.
 
 The state indicates that the task has been planned with a defined set of subtasks and is ready for implementation.
-The task folder must contain `subtasks.md` and the `subtasks/` directory (with at least one subtask subdirectory, each containing a `description` file) in this state and optionally the `design.md` file for a more comprehensive approach, in addition to the files required in the `PROPOSED` state.
+The task folder must contain `subtasks.md` and the `subtasks/` directory (with at least one subtask subdirectory, each containing a `description` file) in this state, in addition to the files required in the `PROPOSED` state.
 
 By reading `subtasks.md` for the whole picture and the subtask `description` files for detail, engineers can understand the specific subtasks to be completed and the design approach. Then, designated engineers can proceed with the implementation to move the task to the next state of `IMPLEMENTED`.
 

@@ -15,7 +15,7 @@ Free Bird mode runs the full Tequila flywheel automatically for a given task: pl
    - Confirm that `proposal.md` exists and is well-formed.
    - Update `.tequila/work` to `{task-id}` so the focused task stays in sync.
 2. Create the file `.tequila/tasks/{task-id}/reincarnation` containing `15` (the default retry budget). If the file already exists, use its current value.
-3. **Plan** — Follow [PLAN-TASK.md](./PLAN-TASK.md) to create `subtasks.md` and the `subtasks/` directory (and optionally `design.md`) and move the task to `PLANNED`.
+3. **Plan** — Follow [PLAN-TASK.md](./PLAN-TASK.md) to create `subtasks.md` and the `subtasks/` directory and move the task to `PLANNED`.
 4. **Implement** — Follow [IMPLEMENT-TASK.md](./IMPLEMENT-TASK.md) to complete all subtasks and move the task to `IMPLEMENTED`.
 5. **Validate** — Follow [VALIDATE-TASK.md](./VALIDATE-TASK.md) using the validation description provided by the user. Validation runs automatically without human review of individual subtasks.
    - If validation **passes**, all subtask `state` files are set to `APPROVED`. Proceed to step 6.

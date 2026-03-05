@@ -9,7 +9,6 @@ When preparing a PR for an implemented task, follow these steps:
 2. Gather context for the PR description:
    - Read `proposal.md` for motivation and summary.
    - Read `subtasks.md` for the overview and subtask `description` files under `subtasks/` for detail.
-   - Optionally read `design.md` if it exists for design decisions.
    - Review committed changes relevant to this task (e.g., git log and diff).
 3. Create `pr.md` inside the task folder using the [CREATE-PR.md](../../assets/templates/CREATE-PR.md) template, filled with the gathered context.
 4. Summarize the prepared PR and provide any next steps if applicable.

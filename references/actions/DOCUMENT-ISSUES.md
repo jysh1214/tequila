@@ -6,7 +6,7 @@ When documenting issues found in a task, follow these steps:
    - Identify the `task-id` based on the user's description if not provided accurately, and confirm it with the user.
    - If the folder does not exist, inform the user and abort the current action.
    - If the task is in the `ARCHIVED` state, inform the user that archived tasks cannot have issues documented, and abort the current action.
-2. Read the relevant task files (`proposal.md`, `subtasks.md`, subtask `description` files under `subtasks/`, `design.md`, etc.) and the codebase to understand the task and identify the issues.
+2. Read the relevant task files (`proposal.md`, `subtasks.md`, subtask `description` files under `subtasks/`, etc.) and the codebase to understand the task and identify the issues.
 3. Check if `issues.md` already exists inside the task folder.
    - If it exists, append the new issues to the existing file.
    - Otherwise, create the file using the [DOCUMENT-ISSUES.md](../../assets/templates/DOCUMENT-ISSUES.md) template.
