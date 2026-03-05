@@ -10,16 +10,17 @@ Tequila is an agent skill (not a traditional application) that manages tasks in 
 
 - `SKILL.md` — Skill entry point with YAML front matter; defines the decision tree that routes user intent to specific actions
 - `references/PRINCIPLE.md` — Core conventions, folder structure specification, and task lifecycle state machine
-- `references/actions/` — 9 action guides (SHOW-STATUS, PROPOSE-TASK, PLAN-TASK, IMPLEMENT-TASK, VALIDATE-TASK, ARCHIVE-TASK, AMEND-TASK, CREATE-PR, DOCUMENT-ISSUES)
-- `assets/templates/` — 6 Markdown templates for artifacts (proposals, subtasks, validations, etc.)
+- `references/actions/` — 10 action guides (SHOW-STATUS, PROPOSE-TASK, PLAN-TASK, IMPLEMENT-TASK, VALIDATE-TASK, ARCHIVE-TASK, AMEND-TASK, CREATE-PR, DOCUMENT-ISSUES, FREE-BIRD)
+- `assets/templates/` — 7 Markdown templates for artifacts and reports (proposals, subtasks, PRs, validations, issues, status outputs)
 
 ## Key Concepts
 
 - **Tasks** are the primary unit of work, each mapping to a Git PR
-- **Subtasks** are individual steps within a task, each mapping to a Git commit. Changes are not committed during implementation — after archiving, the user is asked whether to commit, and the diff is split into subtask-aligned commits
+- **Subtasks** are individual steps within a task, each mapping to a Git commit. Each subtask directory contains a `commit_message` (used directly as the Git commit message), a `patch`, and a `state` file
 - **Jira tickets** are optional metadata — multiple tasks can share the same ticket
-- Tasks go through a lifecycle: `PROPOSED → PLANNED → IMPLEMENTED → VALIDATING → ARCHIVED` (validation failure triggers DOCUMENT-ISSUES automatically, setting the task to `FAILED`; once resolved, a failed task falls back to a prior active state)
-- Validation is required before archiving
+- Tasks go through a lifecycle: `PROPOSED → PLANNED → IMPLEMENTED → VALIDATING → ARCHIVED` (validation failure automatically triggers DOCUMENT-ISSUES, setting the task to `FAILED`; once resolved, a failed task falls back to a prior active state)
+- `pr.md` is created during the PLAN phase, not after archiving
+- Validation is required before archiving; validation pass transitions directly to `ARCHIVED`
 
 ## Conventions
 
