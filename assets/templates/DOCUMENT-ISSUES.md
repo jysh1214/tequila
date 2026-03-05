@@ -6,6 +6,11 @@
 
 [Description of what is incorrect or problematic]
 
+#### Reproduction Steps
+
+- [Step to reproduce the issue]
+- [Additional steps if needed]
+
 #### Root Cause
 
 [Why this issue exists or what led to it]
@@ -18,6 +23,11 @@
 ### Issue: [Another Issue Title]
 
 [Description of what is incorrect or problematic]
+
+#### Reproduction Steps
+
+- [Step to reproduce the issue]
+- [Additional steps if needed]
 
 #### Root Cause
 
