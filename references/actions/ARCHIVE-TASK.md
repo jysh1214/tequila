@@ -10,5 +10,5 @@ When archiving an implemented task, follow these steps:
 3. Verify that `validation.md` exists and contains a `PASS` result.
 4. Summarize the archived task and provide any next steps if applicable.
 5. Ask the user whether they want to commit the changes.
-   - If the user agrees, create Git commits for the task. Use the `patch` files in each subtask directory under `subtasks/` to split the changes into separate commits that align with the subtasks — each patch maps to one commit. When subtask boundaries cannot be cleanly separated (e.g., multiple subtasks modified the same file), combine them into a single commit and note the covered subtasks in the commit message.
+   - If the user agrees, create Git commits for the task. Use the `patch` files in each subtask directory under `subtasks/` to split the changes into separate commits that align with the subtasks — each patch maps to one commit, using the `commit_message` file as the commit message. When subtask boundaries cannot be cleanly separated (e.g., multiple subtasks modified the same file), combine them into a single commit and concatenate the covered subtasks' commit messages.
    - If the user declines, leave the changes uncommitted.

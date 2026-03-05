@@ -7,7 +7,7 @@ When validating an implemented task, follow these steps:
    - If the folder does not exist, inform the user and abort the current action.
    - If the task is not in the `IMPLEMENTED` state, inform the user and abort the current action.
 2. Update the `state` file to contain the text `VALIDATING` only.
-3. Read the task files (`proposal.md`, `subtasks.md`, subtask `description` files, etc.) to understand what the task is supposed to achieve.
+3. Read the task files (`proposal.md`, `subtasks.md`, subtask `commit_message` files, etc.) to understand what the task is supposed to achieve.
 4. Determine the validation method:
    - If the user has provided a clear, unambiguous, and reproducible validation method, use it.
    - If the user has not provided a validation method, or if it is ambiguous, ask the user to specify one. Suggest concrete options based on the task (e.g., running specific tests, verifying specific behavior, checking specific outputs) so the user can choose or refine.

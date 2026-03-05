@@ -37,7 +37,7 @@ The corresponding task names are of the same wording (without the index prefix) 
 - `.tequila/tasks/{task-id}/subtasks/`: (required after `PLANNED`)
   Contains one subdirectory per subtask. Each subdirectory is named `{index}-{subtask-name}`, where `{index}` is the 1-based index of the subtask zero-padded to 3 digits and `{subtask-name}` follows the same kebab-case, verb-led convention as task ids (e.g., `001-add-login-endpoint`).
   Each subtask directory contains:
-  - `description`: (required) AI-written explanation of the subtask — its purpose and its role in the overall task. Created during planning with the planned intent; updated during implementation with a description of the actual patch.
+  - `commit_message`: (required) The commit message for this subtask. Created during planning as a draft based on the planned intent; updated during implementation to describe the actual change. Used directly as the Git commit message when archiving.
   - `patch`: (required after implementation) The Git patch file capturing the diff produced by this subtask, enabling reviewability, reproducibility (`git apply`), and natural commit mapping at archive time.
   - `state`: (required after validation) The post-implementation review state, containing either `APPROVED` or `REJECTED` only.
 - `.tequila/tasks/{task-id}/validation.md`: (required after `IMPLEMENTED`, follows [VALIDATION.md](../assets/templates/VALIDATION.md))
@@ -74,9 +74,9 @@ By reading the `proposal.md` file, stakeholders can understand the motivation an
 In this state, the state file contains the text `PLANNED` only.
 
 The state indicates that the task has been planned with a defined set of subtasks and is ready for implementation.
-The task folder must contain `subtasks.md` and the `subtasks/` directory (with at least one subtask subdirectory, each containing a `description` file) in this state, in addition to the files required in the `PROPOSED` state.
+The task folder must contain `subtasks.md` and the `subtasks/` directory (with at least one subtask subdirectory, each containing a `commit_message` file) in this state, in addition to the files required in the `PROPOSED` state.
 
-By reading `subtasks.md` for the whole picture and the subtask `description` files for detail, engineers can understand the specific subtasks to be completed and the design approach. Then, designated engineers can proceed with the implementation to move the task to the next state of `IMPLEMENTED`.
+By reading `subtasks.md` for the whole picture and the subtask `commit_message` files for detail, engineers can understand the specific subtasks to be completed. Then, designated engineers can proceed with the implementation to move the task to the next state of `IMPLEMENTED`.
 
 ### Implemented
 
