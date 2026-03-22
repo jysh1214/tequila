@@ -30,7 +30,7 @@ The corresponding task names are of the same wording (without the index prefix) 
   The ticket file for the task `{task-id}`, containing the Jira ticket index only (e.g., `PROJ-123`).
   Created when the user provides a Jira ticket index during the proposal.
 - `.tequila/tasks/{task-id}/proposal.md`: (required, follows [TASKS-PROPOSAL.md](../assets/templates/TASKS-PROPOSAL.md))
-  The main proposal document for the task `{task-id}`, outlining the motivation, goals, and high-level approach.
+  The main proposal document for the task `{task-id}`, outlining the motivation and a single Given-When-Then acceptance criterion. If multiple GWT statements are needed, split into multiple tasks.
 - `.tequila/tasks/{task-id}/subtasks.md`: (required after `PLANNED`, follows [TASKS-SUBTASKS.md](../assets/templates/TASKS-SUBTASKS.md))
   The subtask overview for the task `{task-id}`, listing all subtasks at a glance.
   Use task list grammar (e.g., `- [ ]` for pending subtasks and `- [x]` for completed subtasks) to track progress.

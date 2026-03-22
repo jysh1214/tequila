@@ -63,9 +63,10 @@ Tequila manages task artifacts under `.tequila/` at the repository root (see [re
 Follow tequila skill, run Free Bird mode for {task-id}; validation: {description of validation}
 ```
    The task must already be in `PROPOSED` state (use step 1 first). Free Bird then takes over: plan → implement → validate → archive, with automatic amend-and-retry on failure.
-1. Propose a new task:
+1. Propose a new task (use a single Given-When-Then as acceptance criterion):
 ```txt
-Follow tequila skill, propose a new task to {description of the task} (optionally include Jira ticket)
+Follow tequila skill, propose a new task (optionally include Jira ticket):
+Given {precondition}, when {action}, then {expected outcome}
 ```
 2. Plan a proposed task:
 ```txt

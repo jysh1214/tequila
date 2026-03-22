@@ -12,7 +12,7 @@ When proposing a new task, follow these steps:
    - `state`: containing the text `PROPOSED` only.
    - `proposal.md`: using the [TASKS-PROPOSAL.md](../../assets/templates/TASKS-PROPOSAL.md) template.
    - `ticket`: (optional) if the user provides a Jira ticket index, create this file containing the ticket index only (e.g., `PROJ-123`).
-4. Fill out the `proposal.md` file with the relevant information about the task.
+4. Fill out the `proposal.md` file with the relevant information about the task. The acceptance criterion must be a single Given-When-Then statement that defines what success looks like. If the task requires multiple GWT statements, it should be split into multiple tasks.
 5. Optionally, add any additional files related to the task, such as diagrams or supporting documents only if requested by the user.
 6. Update `.tequila/work` with the new `task-id` to set it as the currently focused task.
 7. Summarize the created task proposal and provide any next steps if applicable.

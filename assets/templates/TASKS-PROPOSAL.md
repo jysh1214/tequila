@@ -4,10 +4,14 @@
 
 [Why this task is needed]
 
-## Summary
+## Acceptance Criterion
 
-- [Bullet list of what will be done]
+> Given [precondition], when [action], then [expected outcome].
+
+## Notes
+
 - [Mark breaking changes with **BREAKING**]
+- [Any additional context or constraints]
 
 ## Impact
 
