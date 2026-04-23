@@ -17,6 +17,10 @@ When planning a proposed task, follow these steps:
    - `subtasks.md`: using the [TASKS-SUBTASKS.md](../../assets/templates/TASKS-SUBTASKS.md) template. This is the task-level overview listing all subtasks.
    - `subtasks/` directory: containing one subdirectory per subtask, named `{index}-{subtask-name}`, where `{index}` is the 1-based index zero-padded to 3 digits and `{subtask-name}` is kebab-case, verb-led (same convention as task ids). Inside each subdirectory, create a `commit_message` file containing a draft commit message for the subtask based on the planned intent.
 4. Fill out `subtasks.md` with the subtask list using task list grammar (e.g., `- [ ]` for pending subtasks).
-5. Follow [CREATE-PR.md](./CREATE-PR.md) to create `pr.md` inside the task folder.
-6. Update the `state` file to contain the text `PLANNED` only.
-7. Summarize the planned task and provide any next steps if applicable.
+5. **Review each proposed subtask against the rules in [PRINCIPLE.md](../PRINCIPLE.md):**
+   - Does it introduce an identifiable code change? If no, it is a verification activity — move it to the VALIDATE-TASK step instead and do not create a subtask for it.
+   - Does its description use "and" to join concerns, or list multiple unrelated bullets? If yes, propose a split and confirm with the user before proceeding.
+   Re-draft `subtasks.md` and the `subtasks/` tree if either check forces a change.
+6. Follow [CREATE-PR.md](./CREATE-PR.md) to create `pr.md` inside the task folder.
+7. Update the `state` file to contain the text `PLANNED` only.
+8. Summarize the planned task and provide any next steps if applicable.

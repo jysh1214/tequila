@@ -12,6 +12,7 @@ When validating an implemented task, follow these steps:
    - If the user has provided a clear, unambiguous, and reproducible validation method, use it.
    - If the user has not provided a validation method, or if it is ambiguous, ask the user to specify one. Suggest concrete options based on the task (e.g., running specific tests, verifying specific behavior, checking specific outputs) so the user can choose or refine.
    - The validation method **MUST** be clear (well-defined pass/fail criteria), unambiguous (one interpretation only), and reproducible (anyone can follow it and get the same result).
+   - Verification activities that compile an external artifact, run an end-to-end test, or collect empirical measurements belong here — **not** as subtasks (per [PRINCIPLE.md](../PRINCIPLE.md)'s "subtask must produce a code change" rule). Record the exact command, the expected outcome, and the observed result in `validation.md`. If PLAN-TASK surfaced a "verify", "benchmark", or "audit" subtask, fold it into this step and drop the subtask.
 5. Check if `validation.md` already exists inside the task folder.
    - If it exists, update it with the new validation method and results.
    - Otherwise, create the file using the [VALIDATION.md](../../assets/templates/VALIDATION.md) template.

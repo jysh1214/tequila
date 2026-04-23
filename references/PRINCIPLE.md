@@ -6,6 +6,13 @@
 - Keep tasks tightly scoped to the requested outcome. Avoid scope creep.
 - Tasks are the primary unit of work. Each task represents a coherent piece of work that maps to a Git PR.
 - Subtasks are the individual steps within a task. Each subtask maps to a Git commit. Changes are not committed during implementation — after archiving, the user is asked whether to commit, and the diff is split into subtask-aligned commits.
+- A subtask must produce a code change. Pure verification, benchmarking, audit, or observation activities do **not** belong as subtasks — their outcomes live in `validation.md`. Rule of thumb: if the subtask's `patch` file would be empty, it's a validation step, not a subtask.
+- Each subtask should address one coherent concern. Symptoms a subtask is too large:
+  - The `commit_message` body lists 2+ bullet points for unrelated changes.
+  - The patch mixes new source code with new tests, or touches multiple modules.
+  - You need the word "also" or "and" to describe it.
+
+  Split along concern boundaries — typically: implementation, tests (possibly one subtask per test category), and docs. A 50-line subtask is fine; prefer smaller commits over larger ones.
 - A Jira ticket link is optional. Multiple tasks can reference the same ticket.
 
 ## Folder Structure
