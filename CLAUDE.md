@@ -10,7 +10,7 @@ Tequila is an agent skill (not a traditional application) that manages tasks in 
 
 - `SKILL.md` — Skill entry point with YAML front matter; defines the decision tree that routes user intent to specific actions
 - `references/PRINCIPLE.md` — Core conventions, folder structure specification, and task lifecycle state machine
-- `references/actions/` — 10 action guides (SHOW-STATUS, PROPOSE-TASK, PLAN-TASK, IMPLEMENT-TASK, VALIDATE-TASK, ARCHIVE-TASK, AMEND-TASK, CREATE-PR, DOCUMENT-ISSUES, FREE-BIRD)
+- `references/actions/` — 12 action guides (SHOW-STATUS, SHOW-SUBTASKS, PROPOSE-TASK, PLAN-TASK, IMPLEMENT-TASK, VALIDATE-TASK, ARCHIVE-TASK, AMEND-TASK, CREATE-PR, DOCUMENT-ISSUES, FREE-BIRD, MERGE-REBASE)
 - `assets/templates/` — 7 Markdown templates for artifacts and reports (proposals, subtasks, PRs, validations, issues, status outputs)
 
 ## Key Concepts
@@ -21,6 +21,7 @@ Tequila is an agent skill (not a traditional application) that manages tasks in 
 - Tasks go through a lifecycle: `PROPOSED → PLANNED → IMPLEMENTED → VALIDATING → ARCHIVED` (validation failure automatically triggers DOCUMENT-ISSUES, setting the task to `FAILED`; once resolved, a failed task falls back to a prior active state)
 - `pr.md` is created during the PLAN phase, not after archiving
 - Validation is required before archiving; validation pass transitions directly to `ARCHIVED`
+- Merge/rebase conflict resolution uses a separate track (`RESOLVING → VALIDATING → ARCHIVED`, or `ABORTED` if abandoned) driven by MERGE-REBASE; each conflicting file becomes a subtask
 
 ## Conventions
 

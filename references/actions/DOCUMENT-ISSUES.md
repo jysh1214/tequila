@@ -9,7 +9,7 @@ When documenting issues found in a task, follow these steps:
 2. Read the relevant task files (`proposal.md`, `subtasks.md`, subtask `commit_message` files under `subtasks/`, etc.) and the codebase to understand the task and identify the issues.
 3. Check if `issues.md` already exists inside the task folder.
    - If it exists, append the new issues to the existing file.
-   - Otherwise, create the file using the [DOCUMENT-ISSUES.md](../../assets/templates/DOCUMENT-ISSUES.md) template.
+   - Otherwise, create the file using the [ISSUES.md](../../assets/templates/ISSUES.md) template.
 4. For each issue identified or described by the user, document it with:
    - A clear issue title and description.
    - The root cause explaining why the issue exists.

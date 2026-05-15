@@ -20,6 +20,8 @@ Based on the user's request, decide which action to take.
 
 - If the user intends to show the current status of tasks,
   follow [SHOW-STATUS.md](./references/actions/SHOW-STATUS.md) action.
+- If the user intends to show the subtasks of a task,
+  follow [SHOW-SUBTASKS.md](./references/actions/SHOW-SUBTASKS.md) action.
 - If the user intends to propose a new task,
   follow [PROPOSE-TASK.md](./references/actions/PROPOSE-TASK.md) action.
   Distill the user's requirement into a single Given-When-Then acceptance criterion. If multiple GWT statements are needed, present them to the user and discuss whether to split into separate tasks before proceeding.

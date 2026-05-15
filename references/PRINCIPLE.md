@@ -54,7 +54,7 @@ The corresponding task names are of the same wording (without the index prefix) 
 - `.tequila/tasks/{task-id}/reincarnation`: (optional)
   The reincarnation counter for the task `{task-id}`, containing a single integer.
   Used by Free Bird mode to track the remaining retry budget. Initialized to `15` by default, decremented after each amend loop iteration, and stops Free Bird when it reaches `0`.
-- `.tequila/tasks/{task-id}/issues.md`: (required if `FAILED`, follows [DOCUMENT-ISSUES.md](../assets/templates/DOCUMENT-ISSUES.md))
+- `.tequila/tasks/{task-id}/issues.md`: (required if `FAILED`, follows [ISSUES.md](../assets/templates/ISSUES.md))
   The issues document for the task `{task-id}`.
   This document records the issues found, their root causes, and suggested fixes.
 - `.tequila/tasks/{task-id}/pr.md`: (required after `PLANNED`, follows [PR.md](../assets/templates/PR.md))
