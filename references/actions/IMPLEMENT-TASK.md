@@ -11,7 +11,7 @@ When implementing a planned task, follow these steps:
    - Do the subtask as described in its `commit_message` file and per the user's instructions.
    - If more information or clarification is needed, ask the user, and then amend relevant files if necessary.
    - Mark the subtask as completed in `subtasks.md` using task list grammar (e.g., `- [x]` for completed subtasks).
-   - Update the subtask's `commit_message` file with the final commit message describing the actual change.
+   - Update the subtask's `commit_message` file with the final commit message describing the actual change. Keep it short and clean: a concise subject line (≤ 72 characters, imperative mood, no trailing period), and only add a body if non-obvious context is needed — skip filler, restatements, and bullet-point summaries of the diff.
    - Save a Git patch file as `patch` inside the subtask directory. Generate the patch by diffing the working tree changes introduced by this subtask (e.g., `git diff` for the relevant files).
    - Keep the workspace consistent after each subtask (avoid leaving it half-broken unless the user explicitly accepts that).
    - Repeat this step until all subtasks are completed.
