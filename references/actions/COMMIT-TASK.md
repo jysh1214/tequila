@@ -1,6 +1,6 @@
-# Action: Archive Task
+# Action: Commit Task
 
-When archiving an implemented task, follow these steps:
+When committing an archived task, follow these steps:
 
 1. Locate the folder `.tequila/tasks/{task-id}/` with the specified `task-id`.
    - Identify the `task-id` based on the user's description if not provided accurately, and confirm it with the user.

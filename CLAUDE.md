@@ -10,7 +10,7 @@ Tequila is an agent skill (not a traditional application) that manages tasks in 
 
 - `SKILL.md` — Skill entry point with YAML front matter; defines the decision tree that routes user intent to specific actions
 - `references/PRINCIPLE.md` — Core conventions, folder structure specification, and task lifecycle state machine
-- `references/actions/` — 12 action guides (SHOW-STATUS, SHOW-SUBTASKS, PROPOSE-TASK, PLAN-TASK, IMPLEMENT-TASK, VALIDATE-TASK, ARCHIVE-TASK, AMEND-TASK, CREATE-PR, DOCUMENT-ISSUES, FREE-BIRD, MERGE-REBASE)
+- `references/actions/` — 12 action guides (SHOW-STATUS, SHOW-SUBTASKS, PROPOSE-TASK, PLAN-TASK, IMPLEMENT-TASK, VALIDATE-TASK, COMMIT-TASK, AMEND-TASK, CREATE-PR, DOCUMENT-ISSUES, FREE-BIRD, MERGE-REBASE)
 - `assets/templates/` — 7 Markdown templates for artifacts and reports (proposals, subtasks, PRs, validations, issues, status outputs)
 
 ## Key Concepts
