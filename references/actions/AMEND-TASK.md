@@ -12,5 +12,6 @@ When amending an existing task, follow these steps:
    - Remove directly instead of marking items as deleted if requested.
 4. Check whether the amendments invalidate the current state's entry conditions (see [PRINCIPLE.md](../PRINCIPLE.md) Task Lifecycle). For example:
    - Adding a new subtask directory without a `patch` file to an `IMPLEMENTED` or later task (all subtasks must have patches).
+   - Amending the subtasks or implementation of a `PASSED` task invalidates the recorded `PASS` result, since validation no longer reflects the current changes. Inform the user and roll the state back to `IMPLEMENTED` so the task is re-validated before it can return to `PASSED`.
    - If the state is no longer consistent, inform the user and ask whether to roll back the state to the last valid one.
 5. Summarize the amendments made to the task and provide any next steps if applicable.
