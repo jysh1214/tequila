@@ -12,12 +12,6 @@ Claude code:
 mkdir -p .claude/skills && git clone https://github.com/jysh1214/tequila.git .claude/skills/tequila && rm -rf .claude/skills/tequila/.git
 ```
 
-Auggie:
-
-```sh
-mkdir -p .augment/skills && git clone https://github.com/jysh1214/tequila.git .augment/skills/tequila && rm -rf .augment/skills/tequila/.git
-```
-
 ## Task Lifecycle
 
 ```
@@ -110,3 +104,4 @@ Refer to the [SKILL.md](./SKILL.md) file for how the skill works in detail.
 ## Acknowledgements
 
 This project is forked from [Specrate](https://github.com/rickygao/specrate), which was heavily inspired by [OpenSpec](https://openspec.dev).
+
