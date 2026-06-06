@@ -15,4 +15,5 @@ When documenting issues found in a task, follow these steps:
    - The root cause explaining why the issue exists.
    - A bullet list of suggested fixes describing possible approaches to resolve it.
 5. Update the `state` file to contain the text `FAILED` only.
+   - If the task was in the `PASSED` state, documenting issues supersedes the recorded `PASS` result: update the status to `FAIL` in `validation.md` so the validation outcome stays consistent with the documented issues.
 6. Summarize the documented issues and suggest next steps if applicable (e.g., amending the task, re-planning, re-implementing subtasks).
