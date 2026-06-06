@@ -13,7 +13,7 @@
 | ID | State | Ticket | Summary |
 | -- | ----- | ------ | ------- |
 
-[State is one of "PROPOSED", "PLANNED", "IMPLEMENTED", "VALIDATING", "FAILED", "ARCHIVED" from STATE file]
+[State is one of "PROPOSED", "PLANNED", "IMPLEMENTED", "VALIDATING", "PASSED", "FAILED", "ARCHIVED" from STATE file]
 [Ticket is the Jira ticket index from the ticket file, or "none" if not present]
 [Summary is a concise summary extracted from the proposal.md file]
 

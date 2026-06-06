@@ -1,32 +1,14 @@
 # Action: Merge/Rebase
 
-```
-         merge/rebase
-              │
-              ▼
-        ┌───────────┐
-   ┌───▶│  RESOLVE  │◀─────────────┐
-   │    └─────┬─────┘              │
-   │          ▼                    │
-   │    ┌───────────┐              │
-   │    │ VALIDATE  │              │
-   │    └─────┬─────┘              │
-   │          │                    │
-   │     ┌────┴────┐               │
-   │     │         │               │
-   │   pass      fail              │
-   │     │         │               │
-   │     ▼         ▼               │
-   │ ┌─────────┐ ┌──────┐          │
-   │ │ ARCHIVE │ │ FAIL ├──────────┘
-   │ └─────────┘ └──────┘
-   │
- abort
-   │
-   ▼
-┌───────────┐
-│   ABORT   │
-└───────────┘
+```mermaid
+flowchart TD
+    START[merge/rebase] --> RESOLVE
+    RESOLVE --> VALIDATE
+    VALIDATE -->|pass| PASSED
+    VALIDATE -->|fail| FAIL
+    PASSED -->|force push| ARCHIVE
+    FAIL --> RESOLVE
+    RESOLVE -->|abort| ABORT
 ```
 
 When resolving conflicts from a merge or rebase, follow these steps:
@@ -89,9 +71,9 @@ Once all conflicts are resolved:
 
 Update the task state to `VALIDATING`.
 
-Follow [VALIDATE-TASK.md](./VALIDATE-TASK.md) to validate the result (e.g., build passes, tests pass, no regressions).
+Follow [VALIDATE-TASK.md](./VALIDATE-TASK.md) to validate the result (e.g., build passes, tests pass, no regressions). On pass, VALIDATE-TASK sets the task state to `PASSED`.
 
-- If validation passes, update the task state to `ARCHIVED`. Summarize all resolutions and ask the user whether they want to force push the result.
+- If validation passes (state `PASSED`), summarize all resolutions and ask the user whether they want to force push the result. If the user agrees, force push and update the task state to `ARCHIVED`. If the user declines, leave the task in `PASSED`.
 - If validation fails, follow [DOCUMENT-ISSUES.md](./DOCUMENT-ISSUES.md) to document the issues and update the task state to `FAILED`. Once resolved, the task can be moved back to `RESOLVING` for retry.
 
 ## Abort

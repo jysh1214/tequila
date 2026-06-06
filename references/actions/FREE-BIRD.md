@@ -1,6 +1,6 @@
 # Action: Free Bird
 
-Free Bird mode runs the full Tequila flywheel automatically for a given task: plan → implement → validate → archive. On validation failure it documents issues, amends, and retries until the task passes or the reincarnation counter reaches zero.
+Free Bird mode runs the full Tequila flywheel automatically for a given task: plan → implement → validate → commit. On validation failure it documents issues, amends, and retries until the task passes or the reincarnation counter reaches zero.
 
 ## Required Inputs
 
@@ -18,9 +18,9 @@ Free Bird mode runs the full Tequila flywheel automatically for a given task: pl
 3. **Plan** — Follow [PLAN-TASK.md](./PLAN-TASK.md) to create `subtasks.md` and the `subtasks/` directory and move the task to `PLANNED`.
 4. **Implement** — Follow [IMPLEMENT-TASK.md](./IMPLEMENT-TASK.md) to complete all subtasks and move the task to `IMPLEMENTED`.
 5. **Validate** — Follow [VALIDATE-TASK.md](./VALIDATE-TASK.md) using the validation description provided by the user. Validation runs automatically without human review of individual subtasks.
-   - If validation **passes**, all subtask `state` files are set to `APPROVED`. Proceed to step 6.
+   - If validation **passes**, all subtask `state` files are set to `APPROVED` and the task moves to `PASSED`. Proceed to step 6.
    - If validation **fails**, the DOCUMENT-ISSUES action is triggered automatically by VALIDATE-TASK (setting the task to `FAILED` with issues recorded in `issues.md`). Proceed to step 7.
-6. **Commit** — Follow [COMMIT-TASK.md](./COMMIT-TASK.md). The flywheel is complete — summarize the result and stop.
+6. **Commit** — Follow [COMMIT-TASK.md](./COMMIT-TASK.md) to commit the passed task and move it to `ARCHIVED`. The flywheel is complete — summarize the result and stop.
 7. **Amend loop** — Validation failed and issues have been documented.
    a. Read the current value from `.tequila/tasks/{task-id}/reincarnation` and decrement it by 1. Write the new value back.
    b. If the value has reached `0`, leave the task in `FAILED` state, summarize the unresolved issues to the user, and stop. This indicates the current direction or approach is likely wrong.

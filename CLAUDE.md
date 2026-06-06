@@ -18,10 +18,10 @@ Tequila is an agent skill (not a traditional application) that manages tasks in 
 - **Tasks** are the primary unit of work, each mapping to a Git PR
 - **Subtasks** are individual steps within a task, each mapping to a Git commit. Each subtask directory contains a `commit_message` (used directly as the Git commit message), a `patch`, and a `state` file
 - **Jira tickets** are optional metadata — multiple tasks can share the same ticket
-- Tasks go through a lifecycle: `PROPOSED → PLANNED → IMPLEMENTED → VALIDATING → ARCHIVED` (validation failure automatically triggers DOCUMENT-ISSUES, setting the task to `FAILED`; once resolved, a failed task falls back to a prior active state)
+- Tasks go through a lifecycle: `PROPOSED → PLANNED → IMPLEMENTED → VALIDATING → PASSED → ARCHIVED` (validation failure automatically triggers DOCUMENT-ISSUES, setting the task to `FAILED`; once resolved, a failed task falls back to a prior active state)
 - `pr.md` is created during the PLAN phase, not after archiving
-- Validation is required before archiving; validation pass transitions directly to `ARCHIVED`
-- Merge/rebase conflict resolution uses a separate track (`RESOLVING → VALIDATING → ARCHIVED`, or `ABORTED` if abandoned) driven by MERGE-REBASE; each conflicting file becomes a subtask
+- Validation pass transitions the task to `PASSED`; the user is then asked whether to commit, and committing transitions the task to `ARCHIVED` (i.e. `ARCHIVED` means committed)
+- Merge/rebase conflict resolution uses a separate track (`RESOLVING → VALIDATING → PASSED → ARCHIVED`, or `ABORTED` if abandoned) driven by MERGE-REBASE; each conflicting file becomes a subtask
 
 ## Conventions
 

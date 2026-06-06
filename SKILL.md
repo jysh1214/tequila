@@ -31,7 +31,7 @@ Based on the user's request, decide which action to take.
   follow [PLAN-TASK.md](./references/actions/PLAN-TASK.md) action.
 - If the user intends to implement a planned task,
   follow [IMPLEMENT-TASK.md](./references/actions/IMPLEMENT-TASK.md) action.
-- If the user intends to commit an archived task,
+- If the user intends to commit a passed task,
   follow [COMMIT-TASK.md](./references/actions/COMMIT-TASK.md) action.
 - If the user intends to prepare a PR for an implemented task,
   follow [CREATE-PR.md](./references/actions/CREATE-PR.md) action.

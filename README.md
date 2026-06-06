@@ -19,8 +19,9 @@ flowchart TD
     PROPOSE --> PLAN
     PLAN --> IMPLEMENT
     IMPLEMENT --> VALIDATE
-    VALIDATE -->|pass| ARCHIVE
+    VALIDATE -->|pass| PASSED
     VALIDATE -->|fail| DOCUMENT[DOCUMENT ISSUES]
+    PASSED -->|commit| ARCHIVE
     DOCUMENT --> AMEND[AMEND TASK<br/>fix &amp; retry]
     DOCUMENT --> PROPOSE_NEW[PROPOSE NEW TASK]
     AMEND --> PLAN
@@ -52,9 +53,9 @@ Follow tequila skill, implement the planned {task-id}
 ```txt
 Follow tequila skill, validate the implemented {task-id}: {description of validation}
 ```
-5. Commit an archived task:
+5. Commit a passed task:
 ```txt
-Follow tequila skill, commit the archived {task-id}
+Follow tequila skill, commit the passed {task-id}
 ```
 6. Amend an existing task:
 ```txt

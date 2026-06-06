@@ -5,7 +5,7 @@
 - Favor straightforward, minimal implementations first and add complexity only when it is requested or clearly required.
 - Keep tasks tightly scoped to the requested outcome. Avoid scope creep.
 - Tasks are the primary unit of work. Each task represents a coherent piece of work that maps to a Git PR.
-- Subtasks are the individual steps within a task. Each subtask maps to a Git commit. Changes are not committed during implementation — after archiving, the user is asked whether to commit, and the diff is split into subtask-aligned commits.
+- Subtasks are the individual steps within a task. Each subtask maps to a Git commit. Changes are not committed during implementation — once validation passes (the task reaches `PASSED`), the user is asked whether to commit, and the diff is split into subtask-aligned commits. Committing moves the task to `ARCHIVED`.
 - A subtask must produce a code change. Pure verification, benchmarking, audit, or observation activities do **not** belong as subtasks — their outcomes live in `validation.md`. Rule of thumb: if the subtask's `patch` file would be empty, it's a validation step, not a subtask.
 - Each subtask should address one coherent concern. Symptoms a subtask is too large:
   - The `commit_message` body lists 2+ bullet points for unrelated changes.
@@ -31,7 +31,7 @@ The corresponding task names are of the same wording (without the index prefix) 
 
 - `.tequila/tasks/{task-id}/state`: (required)
   The state document for the task `{task-id}`, containing its current state only.
-  Possible states are literally `PROPOSED`, `PLANNED`, `IMPLEMENTED`, `VALIDATING`, `FAILED`, and `ARCHIVED`.
+  Possible states are literally `PROPOSED`, `PLANNED`, `IMPLEMENTED`, `VALIDATING`, `PASSED`, `FAILED`, and `ARCHIVED`.
   See policies in the **Task Lifecycle** section of this document.
 - `.tequila/tasks/{task-id}/ticket`: (optional)
   The ticket file for the task `{task-id}`, containing the Jira ticket index only (e.g., `PROJ-123`).
@@ -69,11 +69,11 @@ Each task goes through a defined lifecycle with specific states. The state must 
 
 ### Standard Track
 
-The possible states are: `PROPOSED`, `PLANNED`, `IMPLEMENTED`, `VALIDATING`, `FAILED`, and `ARCHIVED`. The normal progression is `PROPOSED → PLANNED → IMPLEMENTED → VALIDATING → ARCHIVED`, and a task cannot skip any state in the forward direction. If validation fails, the task enters `FAILED` and issues are documented; once resolved, the task can be moved back to a prior active state for retry.
+The possible states are: `PROPOSED`, `PLANNED`, `IMPLEMENTED`, `VALIDATING`, `PASSED`, `FAILED`, and `ARCHIVED`. The normal progression is `PROPOSED → PLANNED → IMPLEMENTED → VALIDATING → PASSED → ARCHIVED`, and a task cannot skip any state in the forward direction. When validation passes, the task enters `PASSED`; the user is then asked whether to commit, and committing moves the task to `ARCHIVED`. If validation fails, the task enters `FAILED` and issues are documented; once resolved, the task can be moved back to a prior active state for retry.
 
 ### Merge/Rebase Track
 
-Used for conflict resolution during merge or rebase operations. The possible states are: `RESOLVING`, `VALIDATING`, `FAILED`, `ARCHIVED`, and `ABORTED`. The normal progression is `RESOLVING → VALIDATING → ARCHIVED`. If validation fails, the task enters `FAILED`; once resolved, it can return to `RESOLVING`. If the user abandons the operation, the task enters `ABORTED`.
+Used for conflict resolution during merge or rebase operations. The possible states are: `RESOLVING`, `VALIDATING`, `PASSED`, `FAILED`, `ARCHIVED`, and `ABORTED`. The normal progression is `RESOLVING → VALIDATING → PASSED → ARCHIVED`. When validation passes, the task enters `PASSED`; the user is then asked whether to force push the result, and proceeding moves the task to `ARCHIVED`. If validation fails, the task enters `FAILED`; once resolved, it can return to `RESOLVING`. If the user abandons the operation, the task enters `ABORTED`.
 
 ### Proposed
 
@@ -109,7 +109,16 @@ In this state, the state file contains the text `VALIDATING` only.
 The state indicates that the task is undergoing validation.
 The task folder must contain the `validation.md` file documenting the validation method, steps, expected outcome, and result.
 
-If validation passes, the task moves directly to `ARCHIVED`. If validation fails, the DOCUMENT-ISSUES action is triggered automatically, which moves the task to `FAILED`.
+If validation passes, the task moves to `PASSED`. If validation fails, the DOCUMENT-ISSUES action is triggered automatically, which moves the task to `FAILED`.
+
+### Passed
+
+In this state, the state file contains the text `PASSED` only.
+
+The state indicates that the task has passed validation and is ready to be committed.
+The task folder must contain the `validation.md` file with a `PASS` result.
+
+The user is asked whether to commit the changes. If the user agrees, the COMMIT-TASK action splits the diff into subtask-aligned commits and moves the task to `ARCHIVED`. If the user declines, the task remains in `PASSED` until committed later.
 
 ### Failed
 
@@ -124,7 +133,7 @@ A `FAILED` task can be moved back to a prior active state (e.g., `PLANNED` or `I
 
 In this state, the state file contains the text `ARCHIVED` only.
 
-The state indicates that the task has been completed and archived for historical reference.
+The state indicates that the task has been committed and archived for historical reference. A task reaches this state from `PASSED` once the user approves committing the changes (or, on the merge/rebase track, after the result is force pushed).
 
 ### Resolving (Merge/Rebase Track)
 
